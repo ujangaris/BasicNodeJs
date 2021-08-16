@@ -1,0 +1,3 @@
+installasi package nodemon
+- npm isntall express --save
+-npm isntall
