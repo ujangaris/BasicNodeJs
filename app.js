@@ -14,7 +14,7 @@ app.use('/student-add',(req,res,next)=>{
     console.log('ini  middleware');
 }) 
 
-app.use('/student',(req,res,next)=>{
+app.post('/student',(req,res,next)=>{
     console.log(req.body);
     res.redirect('/')
 })
