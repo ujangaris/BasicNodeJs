@@ -5,18 +5,15 @@ const express = require('express')
 
 const app = express()
 
-app.use('/',(req,res,next)=>{
-    console.log('ini adalah middleware selalu berjalan');
-    next()//digunakan untuk mengijikan source dibawahnya berjalan
-}) 
+
 
 app.use('/student-add',(req,res,next)=>{
-    res.send('<h1>Page add student</h1>')
+    res.send('<form action="/student" method="POST" ><input type="text" name="student"><button type="submit">SEND</button></form>')
     console.log('ini  middleware');
 }) 
 
 app.use('/',(req,res,next)=>{
-    res.send('<h1>Ini adalah halaman home</h1>')
+    res.send('<h1>Page Home</h1>')
 }) 
 
 const server = http.createServer(app);
