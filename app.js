@@ -1,15 +1,16 @@
 // Konsept MVC
 const http = require("http");
-// const router = require('./routes')
-const routerStudent = require("./router/student");
-
 const express = require("express");
-const bodyParser = require("body-parser");
-const router = require("./router/student");
-
 const app = express();
+const bodyParser = require("body-parser");
 
 app.use(bodyParser.urlencoded({ extended: false }));
+
+
+app.set("view engine", "ejs");
+app.set("views", "views");
+// const router = require('./routes')
+const routerStudent = require("./router/student");
 
 app.use(routerStudent);
 

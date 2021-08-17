@@ -1,12 +1,8 @@
 const express = require("express");
 const router = express.Router();
+const studentController = require('../controllers/student')
 
-router.get("/student-add", (req, res, next) => {
-  res.send(
-    '<form action="/student" method="POST" ><input type="text" name="student"><button type="submit">SEND</button></form>'
-  );
-  console.log("ini  middleware");
-});
+router.get("/student-add", studentController.getStudent);
 
 router.post("/student", (req, res, next) => {
   console.log(req.body);
