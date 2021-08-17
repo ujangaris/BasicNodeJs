@@ -1,4 +1,5 @@
 // Konsept MVC
+const path = require("path");
 const http = require("http");
 const express = require("express");
 const app = express();
@@ -11,6 +12,9 @@ app.set("views", "views");
 // const router = require('./routes')
 // const routerStudent = require("./router/student");
 const HomeRouter = require("./router/home/homeRouter"); //load routernya
+
+app.use(express.static(path.join(__dirname, "public")));
+
 // app.use(routerStudent);
 app.use(HomeRouter);
 
