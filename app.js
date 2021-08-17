@@ -1,27 +1,21 @@
-// 02. Middleware
+// Konsept MVC
 const http = require("http");
 // const router = require('./routes')
-const express = require('express')
-const bodyParser = require('body-parser')
+const routerStudent = require("./router/student");
 
-const app = express()
+const express = require("express");
+const bodyParser = require("body-parser");
+const router = require("./router/student");
 
-app.use(bodyParser.urlencoded({extended:false}))
+const app = express();
 
+app.use(bodyParser.urlencoded({ extended: false }));
 
-app.use('/student-add',(req,res,next)=>{
-    res.send('<form action="/student" method="POST" ><input type="text" name="student"><button type="submit">SEND</button></form>')
-    console.log('ini  middleware');
-}) 
+app.use(routerStudent);
 
-app.post('/student',(req,res,next)=>{
-    console.log(req.body);
-    res.redirect('/')
-})
-
-app.use('/',(req,res,next)=>{
-    res.send('<h1>Page Home</h1>')
-}) 
+app.use("/", (req, res, next) => {
+  res.send("<h1>Page Home</h1>");
+});
 
 const server = http.createServer(app);
 
