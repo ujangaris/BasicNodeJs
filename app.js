@@ -6,17 +6,13 @@ const bodyParser = require("body-parser");
 
 app.use(bodyParser.urlencoded({ extended: false }));
 
-
 app.set("view engine", "ejs");
 app.set("views", "views");
 // const router = require('./routes')
-const routerStudent = require("./router/student");
-
-app.use(routerStudent);
-
-app.use("/", (req, res, next) => {
-  res.send("<h1>Page Home</h1>");
-});
+// const routerStudent = require("./router/student");
+const HomeRouter = require("./router/home/homeRouter"); //load routernya
+// app.use(routerStudent);
+app.use(HomeRouter);
 
 const server = http.createServer(app);
 
