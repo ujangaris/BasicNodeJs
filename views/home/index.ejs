@@ -1,54 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-  <title>
-    <%= pageTitle %>
-  </title>
-
-  <!-- Bootstrap -->
-  <link href="assets/css/bootstrap.min.css" rel="stylesheet">
-  <link href="assets/css/custom.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
-    integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
-
-
-</head>
+<%- include('../includes/head.ejs') %> 
 
 <body>
   <!-- navbar -->
-  <nav class="navbar navbar-teal navbar-fixed-top">
-    <div class="container">
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse"
-          aria-expanded="false">
-          <span class="sr-only">Toggle navigation</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-
-        <a class="navbar-brand text-uppercase" href="#">
-          Aplikasi Kelola Data Siswa
-        </a>
-      </div>
-    </div>
-  </nav>
+  
+  <%- include('../includes/navbar.ejs') %> 
 
   <!-- content -->
   <div class="container">
     <div class="row">
-      <div class="col-md-3">
-        <div class="list-group-custom">
-          <a href="#" class="list-group-item  active">Home<span class="badge"></span></a>
-          <a href="penilaian-siswa.html" class="list-group-item">Penilaian Siswa<span class="badge"></span></a>
-          <a href="daftar_siswa.html" class="list-group-item">Student List<span class="badge"></span></a>
-        </div>
-      </div><!-- /.col-md-3 -->
+      <%- include('../includes/menu.ejs') %> 
 
       <div class="col-md-9">
         <div class="panel panel-primary">
@@ -119,10 +79,4 @@
         </div>
       </div>
 
-      <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-      <script src="assets/js/jquery.min.js"></script>
-      <!-- Include all compiled plugins (below), or include individual files as needed -->
-      <script src="assets/js/bootstrap.min.js"></script>
-</body>
-
-</html>
+     <%- include('../includes/footer.ejs') %> 
