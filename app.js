@@ -12,11 +12,13 @@ app.set("views", "views");
 // const router = require('./routes')
 // const routerStudent = require("./router/student");
 const HomeRouter = require("./router/home/homeRouter"); //load routernya
+const StudentRouter = require('./router/student/studentRouter')
 
 app.use(express.static(path.join(__dirname, "public")));
 
 // app.use(routerStudent);
 app.use(HomeRouter);
+app.use(StudentRouter);
 
 const server = http.createServer(app);
 
