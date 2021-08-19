@@ -5,6 +5,8 @@ exports.getIndex = (req, res, next) => {
   });
 };
 
+exports.posAddAssessment = (req, res, next) => {};
+
 exports.getAddAssessment = (req, res, next) => {
   res.render("assessment/assessment-add", {
     pageTitle: "Add Assessment",
