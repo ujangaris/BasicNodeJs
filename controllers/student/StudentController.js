@@ -5,6 +5,8 @@ exports.getStudent = (req, res, next) => {
   });
 };
 
+exports.PostAddStudent = (req, res, next) => {};
+
 exports.getAddStudent = (req, res, next) => {
   res.render("student/student-add", {
     pageTitle: "Student Add",
