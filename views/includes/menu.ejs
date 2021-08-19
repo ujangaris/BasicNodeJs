@@ -1,12 +1,14 @@
 <div class="col-md-3">
   <div class="list-group-custom">
-    <a href="/" class="list-group-item active"
+    <a href="/" class="list-group-item <%= path=== '/' ? 'active' : '' %>"
       >Home<span class="badge"></span
     ></a>
     <a href="penilaian-siswa.html" class="list-group-item"
       >Penilaian Siswa<span class="badge"></span
     ></a>
-    <a href="/student-list" class="list-group-item"
+    <a
+      href="/student-list"
+      class="list-group-item <%= path=== '/student-list' ? 'active' : '' %>"
       >Student List<span class="badge"></span
     ></a>
   </div>
