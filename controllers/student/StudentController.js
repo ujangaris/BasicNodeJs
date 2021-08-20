@@ -20,7 +20,7 @@ exports.PostAddStudent = (req, res, next) => {
   const Address = req.body.Address;
   const Student = new StudentModel(name, classs, nik, Image, gender, Address);
   Student.save();
-  res.redirect("/");
+  res.redirect("/student-list");
 };
 
 exports.getAddStudent = (req, res, next) => {
