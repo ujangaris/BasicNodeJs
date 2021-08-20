@@ -16,6 +16,8 @@
                     </a>
                 </div>
                   <table class="table">
+                    <% if(student.length> 0){ %> 
+                      <% for(let students of student) { %> 
                     <tr>
                       <td class="middle">
                         <div class="media">
@@ -26,11 +28,11 @@
                           </div>
                           <div class="media-body">
                             <address>
-                                <b>Name Student</b>          : Name Student<br>
-                                <b>Gender</b>                : Gender<br>
-                                <b> Address </b>             : My Addres<br>
-                                <b> Class </b>               : Class<br>
-                                <b> Nik </b>                 : Student Nik
+                                <b>Name Student</b>          :  <%= students.name %> <br>
+                                <b>Gender</b>                : <%= students.gender %> <br>
+                                <b> Address </b>             : <%= students.Address  %> <br>
+                                <b> Class </b>               : <%= students.classs %> <br>
+                                <b> Nik </b>                 : <%= students.nik %> 
                             </address>
                           </div>
                         </div>
@@ -46,6 +48,8 @@
                         </div>
                       </td>
                     </tr>
+                    <% } %> 
+                    <% } %> 
                   </table>
                </div>
 <%- include('../includes/footer.ejs') %>

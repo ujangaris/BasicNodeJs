@@ -28,4 +28,18 @@ module.exports = class Student {
       });
     });
   }
+
+  static fetchAll(cb) {
+    const p = path.join(
+      path.dirname(process.mainModule.filename),
+      "data",
+      "student.json"
+    );
+    fs.readFile(p, (err, fileContent) => {
+      if (err) {
+        cb([]);
+      }
+      cb(JSON.parse(fileContent));
+    });
+  }
 };

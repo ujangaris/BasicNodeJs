@@ -1,9 +1,13 @@
+const Student = require("../../models/student/studentModel");
 const StudentModel = require("../../models/student/studentModel");
 
 exports.getStudent = (req, res, next) => {
-  res.render("student/student-list", {
-    pageTitle: "Student List",
-    path: "/student-list",
+  StudentModel.fetchAll((student) => {
+    res.render("student/student-list", {
+      pageTitle: "Student List",
+      path: "/student-list",
+      student: student,
+    });
   });
 };
 
