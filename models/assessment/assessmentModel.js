@@ -1,12 +1,18 @@
 const db = require("../../utils/database");
 
 module.exports = class Assessment {
-  constructor(student_id, score) {
+  constructor(id, student_id, score) {
+    this.id = id;
     this.student_id = student_id;
     this.score = score;
   }
 
-  save() {}
+  save() {
+    return db.execute(
+      "INSERT INTO assessment (student_id, score) VALUES (?,?)",
+      [this.student_id, this.score]
+    );
+  }
 
   static fetcAll() {
     return db.execute(
