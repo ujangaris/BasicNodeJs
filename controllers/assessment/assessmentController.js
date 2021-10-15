@@ -87,3 +87,15 @@ exports.postEditAssessment = (req, res, next) => {
       console.log(err);
     });
 };
+
+exports.postDeleteAssessment = (req, res, next) => {
+  const assessmentId = req.body.assessmentId;
+  assessmentModel
+    .deleteById(assessmentId)
+    .then(() => {
+      res.redirect("/assessment");
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};

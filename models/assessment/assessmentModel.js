@@ -31,4 +31,8 @@ module.exports = class Assessment {
       `SELECT am.id,am.score,st.name,st.classs,st.nik,st.gender,st.Address,st.Image FROM assessment am JOIN student st ON am.student_id=st.id WHERE am.id="${id}"`
     );
   }
+
+  static deleteById(id) {
+    return db.execute(`DELETE FROM assessment WHERE id="${id}" `);
+  }
 };
