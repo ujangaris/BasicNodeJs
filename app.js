@@ -5,6 +5,7 @@ const express = require("express");
 const app = express();
 const bodyParser = require("body-parser");
 
+const db = require("./utils/database");
 app.use(bodyParser.urlencoded({ extended: false }));
 
 app.set("view engine", "ejs");
@@ -21,7 +22,13 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use(HomeRouter);
 app.use(StudentRouter);
 app.use(AssessmentRouter);
-
+db.execute("SELECT * FROM student")
+  .then((result) => {
+    console.log(result);
+  })
+  .catch((err) => {
+    console.log(err);
+  });
 const server = http.createServer(app);
 
 server.listen(3000);
