@@ -68,3 +68,9 @@ exports.postEditStudent = (req, res, next) => {
   Student.save();
   res.redirect("/student-list");
 };
+
+exports.deleteStudent = (req, res, next) => {
+  const studentid = req.body.studentid;
+  StudentModel.deleteById(studentid);
+  res.redirect("/student-list");
+};

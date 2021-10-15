@@ -56,4 +56,11 @@ module.exports = class Student {
       cb(student);
     });
   }
+
+  static deleteById(id) {
+    getStudentFromFile((students) => {
+      const studentDelete = students.filter((stud) => stud.id !== id);
+      console.log(studentDelete);
+    });
+  }
 };
