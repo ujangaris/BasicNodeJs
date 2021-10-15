@@ -58,11 +58,12 @@ module.exports = class Student {
     // getStudentFromFile(cb);
     return db.execute("SELECT * FROM student");
   }
-  static FindById(id, cb) {
-    getStudentFromFile((students) => {
-      const student = students.find((p) => p.id === id);
-      cb(student);
-    });
+  static FindById(id) {
+    return db.execute("SELECT * FROM student WHERE student.id = ?", [id]);
+    // getStudentFromFile((students) => {
+    //   const student = students.find((p) => p.id === id);
+    //   cb(student);
+    // });
   }
 
   static deleteById(id) {
