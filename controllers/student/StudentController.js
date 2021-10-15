@@ -27,6 +27,8 @@ exports.getAddStudent = (req, res, next) => {
   res.render("student/student-add", {
     pageTitle: "Student Add",
     path: "/student-list",
+    edit: false,
+    student: "",
   });
 };
 
@@ -37,7 +39,11 @@ exports.getEditStudent = (req, res, next) => {
   }
   const studentId = req.params.student;
   StudentModel.FindById(studentId, (student) => {
-    console.log(student);
-    res.redirect("/");
+    res.render("student/student-add", {
+      pageTitle: "Student Add",
+      path: "/student-list",
+      student: student,
+      edit: true,
+    });
   });
 };
