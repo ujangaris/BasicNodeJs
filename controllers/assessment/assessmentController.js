@@ -1,5 +1,5 @@
 const assessmentModel = require("../../models/assessment/assessmentModel");
-
+const StudentModel = require("../../models/student/studentModel");
 exports.getIndex = (req, res, next) => {
   assessmentModel
     .fetcAll()
@@ -18,8 +18,15 @@ exports.getIndex = (req, res, next) => {
 exports.posAddAssessment = (req, res, next) => {};
 
 exports.getAddAssessment = (req, res, next) => {
-  res.render("assessment/assessment-add", {
-    pageTitle: "Add Assessment",
-    path: "/assessment",
-  });
+  StudentModel.fetchAll()
+    .then(([rows]) => {
+      res.render("assessment/assessment-add", {
+        pageTitle: "Add Assessment",
+        path: "/assessment",
+        student: rows,
+      });
+    })
+    .catch((err) => {
+      console.log(err);
+    });
 };

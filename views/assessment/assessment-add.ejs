@@ -21,8 +21,9 @@
                 <label for="email" class="control-label col-md-3">Nik</label>
                 <div class="col-md-8">
                       <select name="jenis_kelamin" class="form-control">
-                        <option value="1">NIK - NAME-STUDENT</option>
-                        <option value="2">NIK - NAME-STUDENT</option>
+                          <% for(let students of student) { %> 
+                        <option value="<%= students.id  %> "><%= students.nik %>  - <%= students.name %>    T</option>
+                        <% } %> 
                       </select>
                 </div>
             </div>
