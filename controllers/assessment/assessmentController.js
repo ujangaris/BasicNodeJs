@@ -4,10 +4,10 @@ exports.getIndex = (req, res, next) => {
   assessmentModel
     .fetcAll()
     .then(([rows]) => {
-      console.log(rows);
       res.render("assessment/index", {
         pageTitle: "Assessment",
         path: "/assessment",
+        assessment: rows,
       });
     })
     .catch((err) => {

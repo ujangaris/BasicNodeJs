@@ -23,28 +23,30 @@
 
             <div class="panel panel-info">
                 <table class="table">
+                    <% if(assessment.length > 0) { %> 
+                        <% for(let assessments of assessment) {%> 
                     <tr>
                         <td class="middle">
                             <div class="media">
                                 <div class="media-left">
                                     <a href="#">
                                         <img class="media-object"
-                                            src="https://4.bp.blogspot.com/-_k5EbzYYHA0/WFgNnIW6cwI/AAAAAAAAAFM/wPuFPnRyQWsk3eArp0MksAdWh3Ev1oYNACLcB/s1600/universitas%2Bpakuan.png"
+                                            src="<%= assessments.Image %> "
                                             height="100px" width="100px" alt="...">
 
                                     </a>
                                 </div>
                                 <div class="media-body">
                                     <address>
-                                        Kelas : 3<br>
-                                        Nama Siswa : nama<br>
-                                        Jenis Kelasmin : Laki-laki<br>
-                                        Nik : 340122
+                                        Class : <%= assessments.classs %> <br>
+                                        Nama Siswa : <%= assessments.name %> <br>
+                                        Jenis Kelasmin : <%= assessments.gender %> <br>
+                                        Nik : <%= assessments.nik %> 
                                     </address>
                                 </div>
                                 <div class="media-body">
                                     <address>
-                                        Nilai Anda : 20
+                                        Nilai Anda : <%= assessments.score %> 
                                     </address>
                                 </div>
                             </div>
@@ -60,6 +62,12 @@
                             </div>
                         </td>
                     </tr>
+                        <%}%> 
+                    <% }else{ %>
+                        <tr>
+                            <td>Data Not found</td>
+                        </tr> 
+                        <% } %> 
                 </table>
             </div>
 
