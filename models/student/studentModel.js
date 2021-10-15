@@ -31,10 +31,23 @@ module.exports = class Student {
     this.Address = Address;
   }
   save() {
-    return db.execute(
-      "INSERT INTO student (name, classs, nik,Image, gender,Address) VALUES (?,?,?,?,?,?)",
-      [this.name, this.classs, this.nik, this.Image, this.gender, this.Address]
-    );
+    if (this.id) {
+      return db.execute(
+        `UPDATE student SET name="${this.name}", classs="${this.classs}", nik="${this.nik}",Image="${this.Image}", gender="${this.gender}",Address="${this.Address}" WHERE id="${this.id}"`
+      );
+    } else {
+      return db.execute(
+        "INSERT INTO student (name, classs, nik,Image, gender,Address) VALUES (?,?,?,?,?,?)",
+        [
+          this.name,
+          this.classs,
+          this.nik,
+          this.Image,
+          this.gender,
+          this.Address,
+        ]
+      );
+    }
 
     // getStudentFromFile((student) => {
     //   if (this.id) {

@@ -86,8 +86,13 @@ exports.postEditStudent = (req, res, next) => {
     gender,
     Address
   );
-  Student.save();
-  res.redirect("/student-list");
+  Student.save()
+    .then(() => {
+      res.redirect("/student-list");
+    })
+    .catch((err) => {
+      console.log(err);
+    });
 };
 
 exports.deleteStudent = (req, res, next) => {
