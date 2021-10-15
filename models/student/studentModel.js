@@ -80,11 +80,12 @@ module.exports = class Student {
   }
 
   static deleteById(id) {
-    getStudentFromFile((students) => {
-      const studentDelete = students.filter((stud) => stud.id !== id);
-      fs.writeFile(p, JSON.stringify(studentDelete), (err) => {
-        console.log(err);
-      });
-    });
+    return db.execute(`DELETE FROM student WHERE id="${id}"`);
+    // getStudentFromFile((students) => {
+    //   const studentDelete = students.filter((stud) => stud.id !== id);
+    //   fs.writeFile(p, JSON.stringify(studentDelete), (err) => {
+    //     console.log(err);
+    //   });
+    // });
   }
 };

@@ -1,8 +1,18 @@
+const assessmentModel = require("../../models/assessment/assessmentModel");
+
 exports.getIndex = (req, res, next) => {
-  res.render("assessment/index", {
-    pageTitle: "Assessment",
-    path: "/assessment",
-  });
+  assessmentModel
+    .fetcAll()
+    .then(([rows]) => {
+      console.log(rows);
+      res.render("assessment/index", {
+        pageTitle: "Assessment",
+        path: "/assessment",
+      });
+    })
+    .catch((err) => {
+      console.log(err);
+    });
 };
 
 exports.posAddAssessment = (req, res, next) => {};
