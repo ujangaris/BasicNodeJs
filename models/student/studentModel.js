@@ -2,6 +2,8 @@ const path = require("path");
 const fs = require("fs");
 const { networkInterfaces } = require("os");
 
+const db = require("../../utils/database");
+
 const p = path.join(
   path.dirname(process.mainModule.filename),
   "data",
@@ -47,8 +49,9 @@ module.exports = class Student {
     });
   }
 
-  static fetchAll(cb) {
-    getStudentFromFile(cb);
+  static fetchAll() {
+    // getStudentFromFile(cb);
+    return db.execute("SELECT * FROM student");
   }
   static FindById(id, cb) {
     getStudentFromFile((students) => {

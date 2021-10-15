@@ -2,13 +2,17 @@
 const StudentModel = require("../../models/student/studentModel");
 
 exports.getStudent = (req, res, next) => {
-  StudentModel.fetchAll((student) => {
-    res.render("student/student-list", {
-      pageTitle: "Student List",
-      path: "/student-list",
-      student: student,
+  StudentModel.fetchAll()
+    .then(([rows, filedData]) => {
+      res.render("student/student-list", {
+        pageTitle: "Student List",
+        path: "/student-list",
+        student: rows,
+      });
+    })
+    .catch((err) => {
+      console.log(err);
     });
-  });
 };
 
 exports.PostAddStudent = (req, res, next) => {
