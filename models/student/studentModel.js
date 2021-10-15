@@ -28,6 +28,7 @@ module.exports = class Student {
     this.Address = Address;
   }
   save() {
+    this.id = Math.random().toString();
     getStudentFromFile((student) => {
       student.push(this);
       fs.writeFile(p, JSON.stringify(student), (err) => {

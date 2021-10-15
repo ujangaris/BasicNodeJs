@@ -1,4 +1,4 @@
-const Student = require("../../models/student/studentModel");
+// const Student = require("../../models/student/studentModel");
 const StudentModel = require("../../models/student/studentModel");
 
 exports.getStudent = (req, res, next) => {
@@ -28,4 +28,14 @@ exports.getAddStudent = (req, res, next) => {
     pageTitle: "Student Add",
     path: "/student-list",
   });
+};
+
+exports.getEditStudent = (req, res, next) => {
+  const Edit = req.query.edit;
+  if (!Edit) {
+    res.redirect("/");
+  }
+  const studentId = req.params.student;
+  console.log(studentId);
+  res.redirect("/");
 };
