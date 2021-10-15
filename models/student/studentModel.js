@@ -31,22 +31,27 @@ module.exports = class Student {
     this.Address = Address;
   }
   save() {
-    getStudentFromFile((student) => {
-      if (this.id) {
-        const studentindex = student.findIndex((stud) => stud.id === this.id);
-        const updatedstudent = [...student];
-        updatedstudent[studentindex] = this;
-        fs.writeFile(p, JSON.stringify(updatedstudent), (err) => {
-          console.log(err);
-        });
-      } else {
-        this.id = Math.random().toString();
-        student.push(this);
-        fs.writeFile(p, JSON.stringify(student), (err) => {
-          console.log(err);
-        });
-      }
-    });
+    return db.execute(
+      "INSERT INTO student (name, classs, nik,Image, gender,Address) VALUES (?,?,?,?,?,?)",
+      [this.name, this.classs, this.nik, this.Image, this.gender, this.Address]
+    );
+
+    // getStudentFromFile((student) => {
+    //   if (this.id) {
+    //     const studentindex = student.findIndex((stud) => stud.id === this.id);
+    //     const updatedstudent = [...student];
+    //     updatedstudent[studentindex] = this;
+    //     fs.writeFile(p, JSON.stringify(updatedstudent), (err) => {
+    //       console.log(err);
+    //     });
+    //   } else {
+    //     this.id = Math.random().toString();
+    //     student.push(this);
+    //     fs.writeFile(p, JSON.stringify(student), (err) => {
+    //       console.log(err);
+    //     });
+    //   }
+    // });
   }
 
   static fetchAll() {
