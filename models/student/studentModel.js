@@ -60,7 +60,9 @@ module.exports = class Student {
   static deleteById(id) {
     getStudentFromFile((students) => {
       const studentDelete = students.filter((stud) => stud.id !== id);
-      console.log(studentDelete);
+      fs.writeFile(p, JSON.stringify(studentDelete), (err) => {
+        console.log(err);
+      });
     });
   }
 };
