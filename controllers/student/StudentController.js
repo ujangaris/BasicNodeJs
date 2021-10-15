@@ -18,7 +18,15 @@ exports.PostAddStudent = (req, res, next) => {
   const Image = req.body.Image;
   const gender = req.body.gender;
   const Address = req.body.Address;
-  const Student = new StudentModel(name, classs, nik, Image, gender, Address);
+  const Student = new StudentModel(
+    null,
+    name,
+    classs,
+    nik,
+    Image,
+    gender,
+    Address
+  );
   Student.save();
   res.redirect("/student-list");
 };
