@@ -17,7 +17,7 @@
     </div>
     <div class="panel-body">
         <div class="form-horizontal">
-            <form action="/student-add" method="POST">
+            <form action="/<% if(edit){ %>student-edit<% }else { %>studen-add<% } %>" method="POST">
                  
             <div class="row">
                 <div class="col-md-8">
@@ -65,6 +65,9 @@
                             <textarea name="Address" id="address" rows="3"
                                 class="form-control"><%= edit === true ? student.Address : '' %> </textarea>
                         </div>
+                        <% if(edit){ %> 
+                        <input type="hidden" name="studentid" value="<%= student.id %>">
+                        <% } %> 
                     </div>
                 </div>
             </div>

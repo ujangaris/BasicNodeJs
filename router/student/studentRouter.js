@@ -8,5 +8,8 @@ router.get("/student-list/add", StudentController.getAddStudent);
 
 router.post("/student-add", StudentController.PostAddStudent);
 
+router.post("/student-edit", StudentController.postEditStudent);
+
 router.get("/student-list/:student", StudentController.getEditStudent);
+
 module.exports = router;

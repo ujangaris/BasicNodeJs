@@ -47,3 +47,24 @@ exports.getEditStudent = (req, res, next) => {
     });
   });
 };
+
+exports.postEditStudent = (req, res, next) => {
+  const studentid = req.body.studentid;
+  const name = req.body.name;
+  const classs = req.body.classs;
+  const nik = req.body.nik;
+  const Image = req.body.Image;
+  const gender = req.body.gender;
+  const Address = req.body.Address;
+  const Student = new StudentModel(
+    studentid,
+    name,
+    classs,
+    nik,
+    Image,
+    gender,
+    Address
+  );
+  Student.save();
+  res.redirect("/student-list");
+};
