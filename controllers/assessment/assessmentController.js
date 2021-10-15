@@ -37,6 +37,7 @@ exports.getAddAssessment = (req, res, next) => {
         pageTitle: "Add Assessment",
         path: "/assessment",
         student: rows,
+        edit: false,
       });
     })
     .catch((err) => {
@@ -53,8 +54,13 @@ exports.getEditAssessment = (req, res, next) => {
   assessmentModel
     .findById(assessmentId)
     .then(([rows]) => {
-      console.log(rows);
-      return res.redirect("/assessment");
+      res.render("assessment/assessment-add", {
+        pageTitle: "Add Assessment",
+        path: "/assessment",
+        assessment: rows[0],
+        student: "",
+        edit: true,
+      });
     })
     .catch((err) => {
       console.log(err);
