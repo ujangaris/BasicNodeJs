@@ -40,4 +40,10 @@ module.exports = class Student {
   static fetchAll(cb) {
     getStudentFromFile(cb);
   }
+  static FindById(id, cb) {
+    getStudentFromFile((students) => {
+      const student = students.find((p) => p.id === id);
+      cb(student);
+    });
+  }
 };

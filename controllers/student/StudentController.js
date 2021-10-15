@@ -36,6 +36,8 @@ exports.getEditStudent = (req, res, next) => {
     res.redirect("/");
   }
   const studentId = req.params.student;
-  console.log(studentId);
-  res.redirect("/");
+  StudentModel.FindById(studentId, (student) => {
+    console.log(student);
+    res.redirect("/");
+  });
 };
