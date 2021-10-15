@@ -43,3 +43,20 @@ exports.getAddAssessment = (req, res, next) => {
       console.log(err);
     });
 };
+
+exports.getEditAssessment = (req, res, next) => {
+  const edit = req.query.edit;
+  if (!edit) {
+    return res.redirect("/assessment");
+  }
+  const assessmentId = req.params.id;
+  assessmentModel
+    .findById(assessmentId)
+    .then(([rows]) => {
+      console.log(rows);
+      return res.redirect("/assessment");
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
