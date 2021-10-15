@@ -54,12 +54,17 @@ exports.getEditAssessment = (req, res, next) => {
   assessmentModel
     .findById(assessmentId)
     .then(([rows]) => {
-      res.render("assessment/assessment-add", {
-        pageTitle: "Add Assessment",
-        path: "/assessment",
-        assessment: rows[0],
-        student: "",
-        edit: true,
+      return rows[0];
+    })
+    .then((rows) => {
+      StudentModel.fetchAll().then(([result]) => {
+        res.render("assessment/assessment-add", {
+          pageTitle: "Add Assessment",
+          path: "/assessment",
+          assessment: rows,
+          student: result,
+          edit: true,
+        });
       });
     })
     .catch((err) => {

@@ -21,8 +21,9 @@
                 <label for="email" class="control-label col-md-3">Nik</label>
                 <div class="col-md-8">
                       <select name="student_id" class="form-control">
+                          <option selected value="<%= assessment.id  %> "><%= assessment.nik %>  - <%= assessment.name %> </option>
                           <% for(let students of student) { %> 
-                        <option value="<%= students.id  %> "><%= students.nik %>  - <%= students.name %>    T</option>
+                        <option value="<%= students.id  %> "><%= students.nik %>  - <%= students.name %></option>
                         <% } %> 
                       </select>
                 </div>
@@ -31,8 +32,11 @@
             <div class="form-group">
                 <label for="name" class="control-label col-md-3">Score</label>
                 <div class="col-md-8">
-                    <input type="number" name="score" id="score"
+                    <input type="number" value="<%= assessment.score %>" name="score" id="score"
                         class="form-control">
+                        <% if(edit) {%> 
+                        <input type="hidden" value="<%= assessment.id %>" name="id" >
+                        <% } %> 
                 </div>
             </div>
         </div>
