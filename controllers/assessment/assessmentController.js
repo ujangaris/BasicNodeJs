@@ -37,6 +37,7 @@ exports.getAddAssessment = (req, res, next) => {
         pageTitle: "Add Assessment",
         path: "/assessment",
         student: rows,
+        assessment: "",
         edit: false,
       });
     })
@@ -66,6 +67,21 @@ exports.getEditAssessment = (req, res, next) => {
           edit: true,
         });
       });
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
+
+exports.postEditAssessment = (req, res, next) => {
+  const id = req.body.id;
+  const student_id = req.body.student_id;
+  const score = req.body.score;
+  const assessment = new assessmentModel(id, student_id, score);
+  assessment
+    .save()
+    .then(() => {
+      res.redirect("/assessment");
     })
     .catch((err) => {
       console.log(err);

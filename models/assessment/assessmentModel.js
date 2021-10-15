@@ -8,10 +8,16 @@ module.exports = class Assessment {
   }
 
   save() {
-    return db.execute(
-      "INSERT INTO assessment (student_id, score) VALUES (?,?)",
-      [this.student_id, this.score]
-    );
+    if (this.id) {
+      return db.execute(
+        `UPDATE assessment set student_id="${this.student_id}",score="${this.score}" WHERE id="${this.id}"`
+      );
+    } else {
+      return db.execute(
+        "INSERT INTO assessment (student_id, score) VALUES (?,?)",
+        [this.student_id, this.score]
+      );
+    }
   }
 
   static fetcAll() {
