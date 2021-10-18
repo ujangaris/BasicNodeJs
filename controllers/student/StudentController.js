@@ -97,8 +97,12 @@ exports.postEditStudent = (req, res, next) => {
 
 exports.deleteStudent = (req, res, next) => {
   const studentid = req.body.studentid;
-  StudentModel.deleteById(studentid)
-    .then(() => {
+  StudentModel.findByPk(studentid)
+    .then((students) => {
+      return students.destroy();
+    })
+    .then((result) => {
+      console.log("DESTROYED");
       res.redirect("/student-list");
     })
     .catch((err) => {
