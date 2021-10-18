@@ -63,12 +63,27 @@ exports.getEditAssessment = (req, res, next) => {
   }
   const assessmentId = req.params.id;
   assessmentModel
-    .findById(assessmentId)
-    .then(([rows]) => {
-      return rows[0];
+    .findByPk(assessmentId, {
+      include: [
+        {
+          model: StudentModel,
+          attributes: [
+            "id",
+            "name",
+            "classs",
+            "nik",
+            "gender",
+            "Address",
+            "Image",
+          ],
+        },
+      ],
     })
     .then((rows) => {
-      StudentModel.fetchAll().then(([result]) => {
+      return rows;
+    })
+    .then((rows) => {
+      StudentModel.findAll().then((result) => {
         res.render("assessment/assessment-add", {
           pageTitle: "Add Assessment",
           path: "/assessment",
@@ -87,10 +102,15 @@ exports.postEditAssessment = (req, res, next) => {
   const id = req.body.id;
   const student_id = req.body.student_id;
   const score = req.body.score;
-  const assessment = new assessmentModel(id, student_id, score);
-  assessment
-    .save()
-    .then(() => {
+  assessmentModel
+    .findByPk(id)
+    .then((assessment) => {
+      assessment.student_id = student_id;
+      assessment.score = score;
+      return assessment.save();
+    })
+    .then((result) => {
+      console.log("CREATED ASSESSMENT");
       res.redirect("/assessment");
     })
     .catch((err) => {
