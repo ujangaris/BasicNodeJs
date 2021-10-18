@@ -4,6 +4,8 @@ const http = require("http");
 const express = require("express");
 const bodyParser = require("body-parser");
 const sequelize = require("./utils/database");
+const AssessmentModel = require("./models/assessment/assessmentModel");
+const StudentModel = require("./models/student/studentModel");
 
 const app = express();
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -23,8 +25,15 @@ app.use(HomeRouter);
 app.use(StudentRouter);
 app.use(AssessmentRouter);
 
+AssessmentModel.belongsTo(StudentModel, {
+  foreignKey: "student_id",
+  constraints: true,
+  onDelete: "CASCADE",
+});
+StudentModel.hasMany(AssessmentModel, { foreignKey: "student_id" });
+
 sequelize
-  .sync()
+  .sync({ force: true })
   .then((result) => {
     app.listen(3000);
   })

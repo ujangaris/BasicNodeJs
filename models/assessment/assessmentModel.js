@@ -49,7 +49,7 @@ const Assessment = sequelize.define("assessment", {
     allowNull: false,
     primaryKey: true,
   },
-  score: String,
+  score: Sequelize.TEXT,
 });
 
 module.exports = Assessment;
