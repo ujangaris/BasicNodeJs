@@ -26,10 +26,13 @@ exports.getIndex = (req, res, next) => {
 exports.posAddAssessment = (req, res, next) => {
   const student_id = req.body.student_id;
   const score = req.body.score;
-  const assessment = new assessmentModel(null, student_id, score);
-  assessment
-    .save()
-    .then(() => {
+  assessmentModel
+    .create({
+      student_id: student_id,
+      score: score,
+    })
+    .then((result) => {
+      console.log("CREATED ASsESSMENT");
       res.redirect("/assessment");
     })
     .catch((err) => {
@@ -38,8 +41,8 @@ exports.posAddAssessment = (req, res, next) => {
 };
 
 exports.getAddAssessment = (req, res, next) => {
-  StudentModel.fetchAll()
-    .then(([rows]) => {
+  StudentModel.findAll()
+    .then((rows) => {
       res.render("assessment/assessment-add", {
         pageTitle: "Add Assessment",
         path: "/assessment",

@@ -33,7 +33,7 @@ AssessmentModel.belongsTo(StudentModel, {
 StudentModel.hasMany(AssessmentModel, { foreignKey: "student_id" });
 
 sequelize
-  .sync({ force: true })
+  .sync()
   .then((result) => {
     app.listen(3000);
   })
