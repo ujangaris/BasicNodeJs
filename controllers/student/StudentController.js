@@ -2,8 +2,8 @@
 const StudentModel = require("../../models/student/studentModel");
 
 exports.getStudent = (req, res, next) => {
-  StudentModel.fetchAll()
-    .then(([rows, filedData]) => {
+  StudentModel.findAll()
+    .then((rows) => {
       res.render("student/student-list", {
         pageTitle: "Student List",
         path: "/student-list",
@@ -32,7 +32,7 @@ exports.PostAddStudent = (req, res, next) => {
   })
     .then((result) => {
       console.log("Created Student");
-      console.log(result);
+      res.redirect("/student-list");
     })
     .catch((err) => {
       console.log(err);
