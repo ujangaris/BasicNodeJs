@@ -54,12 +54,12 @@ exports.getEditStudent = (req, res, next) => {
     res.redirect("/");
   }
   const studentId = req.params.student;
-  StudentModel.FindById(studentId)
-    .then(([student]) => {
+  StudentModel.findByPk(studentId)
+    .then((student) => {
       res.render("student/student-add", {
         pageTitle: "Student Add",
         path: "/student-list",
-        student: student[0],
+        student: student,
         edit: true,
       });
     })
