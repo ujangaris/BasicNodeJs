@@ -1,4 +1,4 @@
-const path = require("path");
+/* const path = require("path");
 const fs = require("fs");
 const { networkInterfaces } = require("os");
 
@@ -89,3 +89,26 @@ module.exports = class Student {
     // });
   }
 };
+ */
+
+const Sequelize = require("sequelize");
+const sequelize = require("../../utils/database");
+const Student = sequelize.define("student", {
+  id: {
+    type: Sequelize.INTEGER,
+    allowNull: false,
+    autoIncrement: true,
+    primaryKey: true,
+  },
+  name: Sequelize.TEXT,
+  classs: Sequelize.TEXT,
+  nik: Sequelize.TEXT,
+  gender: {
+    allowNull: false,
+    type: Sequelize.TEXT,
+  },
+  Address: Sequelize.TEXT,
+  Image: Sequelize.TEXT,
+});
+
+module.exports = Student;
