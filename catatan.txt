@@ -7,3 +7,7 @@ install body-parser
 
 install template EJS
 - npm install ejs --save
+
+
+install sequelize untuk database
+    -npm install --save sequelize
