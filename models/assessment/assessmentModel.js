@@ -1,4 +1,4 @@
-const db = require("../../utils/database");
+/* const db = require("../../utils/database");
 
 module.exports = class Assessment {
   constructor(id, student_id, score) {
@@ -36,3 +36,20 @@ module.exports = class Assessment {
     return db.execute(`DELETE FROM assessment WHERE id="${id}" `);
   }
 };
+ */
+
+const Sequelize = require("sequelize");
+
+const sequelize = require("../../utils/database");
+
+const Assessment = sequelize.define("assessment", {
+  id: {
+    type: Sequelize.INTEGER,
+    autoIncrement: true,
+    allowNull: false,
+    primaryKey: true,
+  },
+  score: String,
+});
+
+module.exports = Assessment;
