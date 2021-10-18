@@ -2,9 +2,10 @@
 const path = require("path");
 const http = require("http");
 const express = require("express");
-const app = express();
 const bodyParser = require("body-parser");
+const sequelize = require("./utils/database");
 
+const app = express();
 app.use(bodyParser.urlencoded({ extended: false }));
 
 app.set("view engine", "ejs");
@@ -22,6 +23,11 @@ app.use(HomeRouter);
 app.use(StudentRouter);
 app.use(AssessmentRouter);
 
-const server = http.createServer(app);
-
-server.listen(3000);
+sequelize
+  .sync()
+  .then((result) => {
+    app.listen(3000);
+  })
+  .catch((err) => {
+    console.log(err);
+  });
