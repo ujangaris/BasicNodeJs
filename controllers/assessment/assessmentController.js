@@ -3,8 +3,15 @@ const assessmentModel = require("../../models/assessment/assessmentModel");
 const StudentModel = require("../../models/student/studentModel");
 exports.getIndex = (req, res, next) => {
   assessmentModel
-    .fetcAll()
-    .then(([rows]) => {
+    .findAll({
+      include: [
+        {
+          model: StudentModel,
+          attributes: ["name", "classs", "nik", "gender", "Address", "Image"],
+        },
+      ],
+    })
+    .then((rows) => {
       res.render("assessment/index", {
         pageTitle: "Assessment",
         path: "/assessment",
