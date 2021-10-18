@@ -76,17 +76,18 @@ exports.postEditStudent = (req, res, next) => {
   const Image = req.body.Image;
   const gender = req.body.gender;
   const Address = req.body.Address;
-  const Student = new StudentModel(
-    studentid,
-    name,
-    classs,
-    nik,
-    Image,
-    gender,
-    Address
-  );
-  Student.save()
-    .then(() => {
+  StudentModel.findByPk(studentid)
+    .then((students) => {
+      students.name = name;
+      students.classs = classs;
+      students.nik = nik;
+      students.Image = Image;
+      students.gender = gender;
+      students.Address = Address;
+      return students.save();
+    })
+    .then((result) => {
+      console.log("UPDATE STUDENT");
       res.redirect("/student-list");
     })
     .catch((err) => {
