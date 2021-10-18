@@ -101,8 +101,12 @@ exports.postEditAssessment = (req, res, next) => {
 exports.postDeleteAssessment = (req, res, next) => {
   const assessmentId = req.body.assessmentId;
   assessmentModel
-    .deleteById(assessmentId)
-    .then(() => {
+    .findByPk(assessmentId)
+    .then((assessment) => {
+      return assessment.destroy();
+    })
+    .then((result) => {
+      console.log("ASSESMENT DESTROY");
       res.redirect("/assessment");
     })
     .catch((err) => {
