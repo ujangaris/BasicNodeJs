@@ -17,6 +17,7 @@ app.set("views", "views");
 const HomeRouter = require("./router/home/homeRouter"); //load routernya
 const StudentRouter = require("./router/student/studentRouter");
 const AssessmentRouter = require("./router/assessment/assessmentRouter");
+const { getRegister } = require("./controllers/login/registerController");
 
 app.use(express.static(path.join(__dirname, "public")));
 
@@ -24,6 +25,7 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use(HomeRouter);
 app.use(StudentRouter);
 app.use(AssessmentRouter);
+app.use(getRegister);
 
 AssessmentModel.belongsTo(StudentModel, {
   foreignKey: "student_id",
