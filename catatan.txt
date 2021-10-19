@@ -11,3 +11,6 @@ install template EJS
 
 install sequelize untuk database
     -npm install --save sequelize
+
+install express-session:
+    -npm install --save express-session

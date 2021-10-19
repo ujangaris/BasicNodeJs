@@ -3,6 +3,7 @@ const path = require("path");
 const http = require("http");
 const express = require("express");
 const bodyParser = require("body-parser");
+const session = require("express-session");
 const sequelize = require("./utils/database");
 const AssessmentModel = require("./models/assessment/assessmentModel");
 const StudentModel = require("./models/student/studentModel");
@@ -20,6 +21,13 @@ const AssessmentRouter = require("./router/assessment/assessmentRouter");
 const { getRegister } = require("./controllers/login/registerController");
 
 app.use(express.static(path.join(__dirname, "public")));
+app.use(
+  session({
+    secret: "my secret",
+    resave: false,
+    saveUninitialized: false,
+  })
+);
 
 // app.use(routerStudent);
 app.use(HomeRouter);
